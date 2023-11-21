@@ -1,0 +1,71 @@
+{% extends 'partials/base.html' %}
+{% block title %}Profile Page{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    Profile Page
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <span class="h4"> Profile Information</span> 
+                            <a class="btn btn-info btn-sm float-right" href="{% url 'user-profile-update' %}">Edit</a>
+                            <hr>
+                            <table class="table bg-white table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Name</th>
+                                        <td>{{user.username}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Email</th>
+                                        <td>{{user.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Phone</th>
+                                        <td>{{user.phone}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Address</th>
+                                        <td>{{user.address}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Staff Status</th>
+                                        <td>{{user.is_staff}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Active/Inactive</th>
+                                        <td>{{user.is_active}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Date of joining</th>
+                                        <td>{{user.date_joined}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="col-md-4">
+                            {% if user.image %}
+                                <img class="img-thumbnail" src="{{ user.image.url }}" alt="">
+                            {% else %}
+                                <p><center>No profile image available</center></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
