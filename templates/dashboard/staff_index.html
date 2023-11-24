@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
-                        {{ form }}
+                        {{ form|crispy }}
                         <input class="btn btn-dark btn-block" type="submit" value="Make Request">
                     </form>
                 </div>
